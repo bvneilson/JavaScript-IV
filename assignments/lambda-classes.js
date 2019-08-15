@@ -20,12 +20,13 @@ class Instructor extends Person {
   }
 
   demo (subject) {
-    console.log(`Today we are learning about ${subject}`);
+    console.log(`${this.name} says: Today we are learning about ${subject}`);
   }
   grade (student, subject) {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
   modifyGrade (student) {
+    console.log(`${this.name} is modifying ${student.name}\'s grade. Old grade: ${student.grade}.`)
     let num = Math.ceil(Math.random() * (20 + 20)) - 20;
     student.grade += num;
   }
@@ -42,8 +43,7 @@ class Student extends Person {
 
   listsSubjects () {
     console.log(`${this.name}\'s favorite subjects are:`)
-    this.favSubjects.map(subject => console.log(subject));
-    console.log(`=========`);
+    this.favSubjects.map(subject => console.log(`   - ${subject}`));
   }
   PRAssignment (subject) {
     console.log(`${this.name} has submitted a PR for ${subject}`);
@@ -53,9 +53,9 @@ class Student extends Person {
   }
   graduate () {
     if (this.grade > 70) {
-      console.log(`Grade: ${this.grade}. ${this.name} is ready to graduate!`);
+      console.log(`New grade: ${this.grade}. ${this.name} is ready to graduate!`);
     } else {
-      console.log(`Grade: ${this.grade}. ${this.name} can\'t graduate yet. Back to grading!`);
+      console.log(`New grade: ${this.grade}. ${this.name} can\'t graduate yet. Back to grading!`);
     }
   }
 }
@@ -147,7 +147,9 @@ obi.demo('HELLO THERE');
 mace.standUp('#jedi_council');
 maul.debugsCode(anakin, 'JavaScript');
 anakin.listsSubjects();
+youngling.sprintChallenge('Git for Jedi');
 
 // Stretch Test
+console.log('===== Stretch =====')
 obi.modifyGrade(anakin);
 anakin.graduate();
